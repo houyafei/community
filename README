@@ -18,3 +18,9 @@ e0f693978011bc389910
 
 5、使用okhttp调用接口
 https://square.github.io/okhttp/
+
+6、使用SQLite
+直接引用即可
+
+7、mybatis
+http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/
