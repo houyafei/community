@@ -7,3 +7,14 @@
 
 3、前端技术
 使用的是bootstap,下载相应的包，解压后放到static目录下
+
+4、github第三方账号api
+https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app
+
+在账号的setting中创建一个oauth app
+
+Client ID
+e0f693978011bc389910
+
+5、使用okhttp调用接口
+https://square.github.io/okhttp/
