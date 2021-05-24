@@ -34,7 +34,6 @@ public class IndexController {
                     System.out.println("get user "+ user);
                     if(user!=null){
                         request.getSession().setAttribute("user",user);
-//                        return "redirect:/";
                     }
                 }
                 break;
