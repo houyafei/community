@@ -52,11 +52,11 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDto);
         GitHubUser gitHubUser = githubProvider.getUser(accessToken);
 
-        if (gitHubUser != null) {
+        if (gitHubUser != null && gitHubUser.getId()!=0) {
 
             User dbUser = githubUserMappers.getUser(""+gitHubUser.getId());
             System.out.println("dbUser is null " + dbUser);
-            if (dbUser==null){
+            if (dbUser==null ){
                 User user = new User();
                 user.setToken(UUID.randomUUID().toString());
                 user.setAccountId("" + gitHubUser.getId());

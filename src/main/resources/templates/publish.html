@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>速宝社区</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--    引入下载的样式-->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/community.css">
+    <!--    引入js-->
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+
+</head>
+<body class="main">
+<!--导航栏 start -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">速宝社区</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">速宝社区</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索话题">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" th:if="${session.user != null}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                       th:text="${session.user.getName()}"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人中心</a></li>
+                        <li><a href="#">消息中心</a></li>
+                        <li><a href="#">退出</a></li>
+
+                    </ul>
+                </li>
+                <li th:if=" ${session.user == null} ">
+                    <a href="https://github.com/login/oauth/authorize?client_id=e0f693978011bc389910&redirect_uri=http://localhost:80/callback&scope=user&state=1">登录</a></li>
+
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--导航栏 end -->
+<div class="container-fluid main_main">
+    <div class="row ">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 notice-bound" >
+           <h2>
+               <button  class="btn btn-success">
+               <span class="glyphicon glyphicon-pencil pencil-font" aria-hidden="true"></span>
+               </button>
+               发起吐槽
+           </h2>
+            <hr>
+           <div role="separator"  class="divider"></div>
+            <form action="/publish" method="post">
+                <div class="form-group">
+                <!-- for 标签的内容 要和 input中的id保持一致-->
+                    <label for="topic_title">话题标题</label>
+                    <input type="text" class="form-control" id="topic_title" name="title" placeholder="开始哔哔吧" th:value="${title}">
+                </div>
+                <div class="form-group">
+                    <label for="description">哔哔内容</label>
+                    <textarea name="description" id="description"  class="form-control text-area-size" cols="30" rows="10" th:text="${description}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="topic_tag">话题标签</label>
+                    <input type="text" class="form-control" id="topic_tag" name="tag" placeholder="标签，以逗号分割"  th:value="${tag}">
+
+                </div>
+                <span class="alert alert-danger" th:if="${error != null}" th:text="${error}"></span>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-publish">发布吐槽</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 " >
+            <br>
+            <h3>吐槽指南</h3>
+            被删除的原因是不符合问问原则，包括：<br>
+            1、危害国家安全，危害社会稳定的信息；<br>
+            2、色情、暴力、恐怖、赌博、教唆犯罪及危害社会公德的信息；<br>
+            3、具有广告性质的内容；<br>
+            4、含有违背伦理道德的内容和信息；<br>
+            5、具有恶意、无聊、抄袭和灌水性质的其他非法内容。<br>
+            更多详细信息请查看帮助页面中的内容删除原则了解具体原因，如仍有质疑可至帮助中心进行投诉。<br>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

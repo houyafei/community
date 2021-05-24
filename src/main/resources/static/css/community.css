@@ -1,0 +1,29 @@
+.main{
+    background-color: #9acfea;
+}
+
+.main_main{
+    background-color: white;
+    margin-left: 13%;
+    margin-right: 13%;
+    margin-top: 1%;
+}
+
+.btn-publish{
+    float: right;
+    margin-bottom: 20px;
+}
+
+.text-area-size{
+    resize:none;
+}
+
+.notice-bound{
+    border-right-color: #0f0f0f;
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+.pencil-font{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
